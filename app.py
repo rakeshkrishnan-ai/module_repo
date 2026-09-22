@@ -29,7 +29,6 @@ file_name = 'config.json'
 with open(file_name, 'r') as file:
     config = json.load(file)
     OPENAI_API_KEY = config.get("OPENAI_API_KEY") # Loading the API Key
-    print(OPENAI_API_KEY)
     OPENAI_API_BASE = config.get("OPENAI_API_BASE") # Loading the API Base Url
 
 
