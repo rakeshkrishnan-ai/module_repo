@@ -14,6 +14,21 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, ToolMessage
 from langchain_core.tools import tool
 
+from openai import OpenAI
+import streamlit as st
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+try:
+    response = client.responses.create(
+        model="gpt-4.1-mini",
+        input="Say hello"
+    )
+    st.success("OpenAI connection works!")
+    st.write(response.output_text)
+except Exception as e:
+    st.error(f"OpenAI connection failed: {type(e).__name__}: {e}")
+
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Kartify Support",
